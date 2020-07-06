@@ -61,9 +61,10 @@ const headerImg = document.querySelector('.cta img')
 headerImg.src = siteContent.cta['img-src']
 
 //MAIN-CONTENT------------------------------------------------------------
-const mainHeader = document.querySelector('.top-content .text-content:first-of-type h4')
+//*********************TOP CONTENT************************************ */
+const mainHeader = document.querySelector('div.top-content .text-content:first-of-type h4')
 mainHeader.innerText = siteContent['main-content']['features-h4']
-const mainSubheader = document.querySelector('.top-content .text-content:first-of-type p')
+const mainSubheader = document.querySelector('div.top-content .text-content:first-of-type p')
 mainSubheader.innerText = siteContent['main-content']['features-content']
 
 const aboutHeader = document.querySelector('div.top-content div.text-content:last-of-type h4')
@@ -72,8 +73,12 @@ aboutHeader.textContent = siteContent['main-content']['about-h4']
 const aboutsubHeader = document.querySelector('div.top-content div.text-content:last-of-type p')
 aboutsubHeader.textContent = siteContent['main-content']['about-content']
 
+// ***************************MIDDLE IMAGE******************************************
+
 const middleImg = document.getElementById('middle-img')
 middleImg.src = siteContent['main-content']['middle-img-src']
+
+// *************************BOTTOM CONTENT*************************************
 
 const servicesHeader = document.querySelector('div.bottom-content div.text-content:first-of-type h4')
 servicesHeader.innerText = siteContent['main-content']['services-h4']
@@ -81,17 +86,82 @@ servicesHeader.innerText = siteContent['main-content']['services-h4']
 const servicesSubHeader = document.querySelector('div.bottom-content div.text-content:first-of-type p')
 servicesSubHeader.innerText = siteContent['main-content']['services-content']
 
-const productHeader = document.querySelector('div.bottom-content div.text-content:last-of-type h4')
-productHeader.textContent = siteContent['main-content']['product-h4']
-
-const productSubHeader = document.querySelector('div.bottom-content div.text-content:last-of-type p')
-productSubHeader.textContent = siteContent['main-content']['product-content']
-
 const visionHeader = document.querySelector('div.bottom-content div.text-content:nth-child(2) h4')
 visionHeader.textContent = siteContent['main-content']['vision-h4']
 
 const visionSubheader = document.querySelector('div.bottom-content div.text-content:nth-child(2) p')
 visionSubheader.textContent = siteContent['main-content']['vision-content']
 
-//CONTACT -----------------------------------------------------------------------------------
+const productHeader = document.querySelector('div.bottom-content div.text-content:last-of-type h4')
+productHeader.textContent = siteContent['main-content']['product-h4']
 
+const productSubHeader = document.querySelector('div.bottom-content div.text-content:last-of-type p')
+productSubHeader.textContent = siteContent['main-content']['product-content']
+
+
+//CONTACT -----------------------------------------------------------------------------------
+const contactHeader = document.querySelector('section.contact h4')
+contactHeader.textContent = siteContent.contact['contact-h4']
+
+const contactParagraphs = document.querySelectorAll('section.contact p')
+contactParagraphs[0].textContent = siteContent.contact.address
+contactParagraphs[1].textContent = siteContent.contact.phone
+contactParagraphs[2].textContent = siteContent.contact.email
+
+//FOOTER-------------------------------------------------------------------
+const footerParagraph = document.querySelector('footer p')
+footerParagraph.textContent = siteContent.footer.copyright
+
+//ADD NEW CONTENT
+//****change color of nav text to green
+const navColor = 'green'
+navLinks.forEach(item => item.style.color = navColor)
+// ****use appendChild() and prepend()
+const navBar = document.querySelector('nav')
+
+const newLink = document.createElement('a')
+newLink.href = "#"
+newLink.textContent = "Mission"
+newLink.style.color = navColor
+navBar.appendChild(newLink)
+
+const newLink2 = document.createElement('a')
+newLink2.href = "#"
+newLink2.textContent = "Home"
+newLink2.style.color = navColor
+navBar.prepend(newLink2)
+
+// STRETCH------------------------------------------------------------------------
+// ****update styles
+headerButton.style.width = 'auto'
+headerButton.style.height = 'auto'
+headerButton.style.borderWidth = '3px'
+headerButton.style.padding = '3% 7%'
+headerButton.style.marginTop = '0'
+headerButton.style.borderStyle = 'solid'
+headerButton.style.borderRadius = '3px'
+
+
+
+middleImg.style.width = "100%"
+
+const container = document.querySelector('.container')
+container.style.backgroundColor = "#fff"
+container.style.padding = "0 2%"
+
+document.body.style.backgroundColor = "#F8F8FF"
+
+const fontLink = document.createElement('link')
+fontLink.href = "https://fonts.googleapis.com/css2?family=Quicksand&display=swap"
+fontLink.setAttribute('rel', 'stylesheet')
+document.head.appendChild(fontLink)
+
+const allParagraphs = document.querySelectorAll('p')
+allParagraphs.forEach(p => {
+  p.style.fontFamily = 'Quicksand'
+  p.style.lineHeight = '1.5'
+})
+
+navLinks.forEach(link => {
+  link.style.fontFamily = 'Quicksand'
+})
