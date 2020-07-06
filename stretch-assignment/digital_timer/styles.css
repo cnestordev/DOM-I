@@ -1,4 +1,4 @@
-body {
+.digits {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,4 +11,9 @@ body {
 
 .redDigit {
   color: red;
+}
+
+.button-div {
+  text-align: center;
+  margin-bottom: 1%;
 }
