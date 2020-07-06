@@ -164,4 +164,50 @@ allParagraphs.forEach(p => {
 
 navLinks.forEach(link => {
   link.style.fontFamily = 'Quicksand'
-})
+});
+
+// **** change content using JS
+const newSection = document.createElement('section')
+
+const topDiv = document.createElement('div')
+const topHeader = document.createElement('h2')
+topHeader.textContent = "Download for Windows"
+topDiv.appendChild(topHeader)
+
+const topButton = document.createElement('button')
+topButton.textContent = "DOWNLOAD"
+topDiv.appendChild(topButton)
+
+const bottomDiv = document.createElement('div')
+const bottomHeader = document.createElement('h2')
+bottomHeader.textContent = "Download for MACOS"
+bottomDiv.appendChild(bottomHeader)
+
+const bottomButton = document.createElement('button')
+bottomButton.textContent = "DOWNLOAD"
+bottomDiv.appendChild(bottomButton)
+
+newSection.appendChild(topDiv)
+newSection.appendChild(bottomDiv)
+
+newSection.style.display = "flex"
+newSection.style.justifyContent = "space-evenly"
+topDiv.style.flexBasis = "40%"
+topButton.style.border = "1px solid black"
+topButton.style.padding = "1% 3%"
+topButton.style.backgroundColor = "transparent"
+bottomDiv.style.flexBasis = "40%"
+bottomButton.style.border = "1px solid black"
+bottomButton.style.padding = "1% 3%"
+bottomButton.style.backgroundColor = "transparent"
+
+//add newSection when button gets clicked
+headerButton.addEventListener('click', function () {
+  const mainContent = document.getElementsByClassName('main-content')[0]
+  mainContent.innerHTML = ""
+  mainContent.append(newSection)
+});
+
+// **** add link to home nav
+const homeLink = document.querySelector('nav a')
+homeLink.addEventListener('click', () => window.location = '/')
