@@ -20,62 +20,63 @@ const digits = document.querySelectorAll('.digit')
 const start = document.getElementById('start')
 start.addEventListener('click', () => {
     hasStarted = true;
+    startTimer()
 })
 
+const reset = document.getElementById('reset')
 
-
-const id = setInterval(() => {
-    if (hasStarted) {
-        msTens++
-        mst.innerText = msTens
-        start.disabled = true;
+function startTimer() {
+    resetValues()
+    const id = setInterval(() => {
+        if (hasStarted) {
+            msTens++
+            mst.innerText = msTens
+            start.disabled = true;
+        }
         if (msTens === 10) {
             msTens = 0;
             mst.innerText = msTens
-
             msHundreds++
             msh.innerText = msHundreds
 
-            if (msHundreds === 10) {
-                msHundreds = 0;
-                msTens = 0;
-                msh.innerText = msHundreds
-                mst.innerText = msTens;
-
-                secondOnes++
-                so.innerText = secondOnes
-
-                if (secondOnes === 10) {
-                    msHundreds = 0;
-                    msTens = 0;
-                    secondOnes = 0
-                    msh.innerText = msHundreds
-                    mst.innerText = msTens;
-                    so.innerText = secondOnes
-                    secondTens++
-                    st.innerText = secondTens
-                    clearInterval(id)
-                    digits.forEach(dig => dig.classList.add('redDigit'))
-                    start.disabled = false;
-                }
-            }
         }
-    }
-}, 10)
+        if (msHundreds === 10) {
+            msHundreds = 0;
+            msh.innerText = msHundreds
 
+            secondOnes++
+            so.innerText = secondOnes
+        }
+        if (secondOnes === 10) {
+            secondOnes = 0
+            so.innerText = secondOnes
+            secondTens++
+            st.innerText = secondTens
+            clearInterval(id)
+            digits.forEach(dig => dig.style.color = "red")
+            start.disabled = false;
+        }
+    }, 10)
+    reset.addEventListener('click', () => {
+        resetTimer(id)
+    })
+}
 
-const reset = document.getElementById('reset')
-reset.addEventListener('click', () => {
+function resetTimer(id) {
     clearInterval(id)
-    let secondTens = 0;
-    let secondOnes = 0;
-    let msHundreds = 0;
-    let msTens = 0;
-    let hasStarted = false
+    hasStarted = false
+    start.disabled = false;
+    resetValues()
+}
+
+function resetValues() {
+    secondTens = 0;
+    secondOnes = 0;
+    msHundreds = 0;
+    msTens = 0;
     st.innerText = secondTens
     so.innerText = secondOnes
     msh.innerText = msHundreds
     mst.innerText = msTens;
-    start.disabled = false;
     digits.forEach(dig => dig.style.color = "black")
-})
+}
