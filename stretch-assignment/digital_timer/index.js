@@ -27,26 +27,33 @@ const reset = document.getElementById('reset')
 
 function startTimer() {
     resetValues()
+    start.disabled = true;
     const id = setInterval(() => {
         if (hasStarted) {
             msTens++
-            mst.innerText = msTens
-            start.disabled = true;
+            if (msTens !== 10) {
+                mst.innerText = msTens
+            }
         }
+
         if (msTens === 10) {
             msTens = 0;
             mst.innerText = msTens
             msHundreds++
-            msh.innerText = msHundreds
-
+            if (msHundreds !== 10) {
+                msh.innerText = msHundreds
+            }
         }
+
         if (msHundreds === 10) {
             msHundreds = 0;
             msh.innerText = msHundreds
-
             secondOnes++
-            so.innerText = secondOnes
+            if (secondOnes !== 10) {
+                so.innerText = secondOnes
+            }
         }
+
         if (secondOnes === 10) {
             secondOnes = 0
             so.innerText = secondOnes
@@ -56,7 +63,8 @@ function startTimer() {
             digits.forEach(dig => dig.style.color = "red")
             start.disabled = false;
         }
-    }, 10)
+    }, 10);
+
     reset.addEventListener('click', () => {
         resetTimer(id)
     })
